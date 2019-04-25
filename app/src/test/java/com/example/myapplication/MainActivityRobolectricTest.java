@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertEquals;
 import static org.robolectric.Shadows.shadowOf;
@@ -16,9 +18,10 @@ import static org.robolectric.Shadows.shadowOf;
 public class MainActivityRobolectricTest {
 
     @Test
-    public void clickingButton_shouldShowResult() {
+    public void login_success_na() {
         // Arrange
-        MainActivity activity = Robolectric.buildActivity(MainActivity.class)
+        MainActivity activity =
+                Robolectric.buildActivity(MainActivity.class)
                 .create()
                 .resume()
                 .get();
@@ -32,10 +35,15 @@ public class MainActivityRobolectricTest {
         button.performClick();
 
         // Assert
-        Intent expectedIntent = new Intent(activity, ResultActivity.class);
-        Intent actual = shadowOf(activity).getNextStartedActivity();
-        assertEquals(expectedIntent.getComponent(), actual.getComponent());
-        assertEquals("Success!!!", actual.getStringExtra("RESULT"));
+        Intent expectedIntent
+                = new Intent(activity, ResultActivity.class);
+        Intent actual
+                = shadowOf(activity).getNextStartedActivity();
+
+        assertEquals(expectedIntent.getComponent(),
+                     actual.getComponent());
+        assertEquals("Success!!!2",
+                     actual.getStringExtra("RESULT"));
     }
 
 }

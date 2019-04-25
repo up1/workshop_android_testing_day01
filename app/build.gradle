@@ -56,7 +56,8 @@ dependencies {
 apply plugin: 'jacoco'
 
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+//task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
 
     reports {
         xml.enabled = true
