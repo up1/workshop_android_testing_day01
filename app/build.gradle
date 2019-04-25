@@ -12,6 +12,13 @@ buildscript {
 }
 
 android {
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.myapplication"
@@ -30,16 +37,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
-//    testOptions {
-//        unitTests.all {
-//            systemProperty 'robolectric.enabledSdks', '21'
-//        }
-//    }
+
 }
 
 dependencies {
