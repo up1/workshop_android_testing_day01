@@ -1,8 +1,7 @@
 package com.example.myapplication;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.widget.Button;
-import android.widget.TextView;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,23 +9,27 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.robolectric.Shadows.shadowOf;
 
-//@RunWith(RobolectricTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class MainActivityRobolectricTest {
 
     @Test
-    public void clickingButton_shouldShowResult() throws Exception {
-//        Activity activity = Robolectric.setupActivity(MainActivity.class);
-//        Activity activity = Robolectric.buildActivity(MainActivity.class)
-//                .create()
-//                .resume()
-//                .get();
-//
-//        Button button = activity.findViewById(R.id.btn_signin);
-//        TextView results = activity.findViewById(R.id.tv_result);
-//        button.performClick();
-//
-//        assertEquals(results.getText().toString(), "Failure");
+    public void clickingButton_shouldShowResult() {
+        // Arrange
+        MainActivity activity = Robolectric.buildActivity(MainActivity.class)
+                .create()
+                .resume()
+                .get();
+
+        // Act
+        Button button = activity.findViewById(R.id.btn_signin);
+        button.performClick();
+
+        // Assert
+        Intent expectedIntent = new Intent(activity, ResultActivity.class);
+        Intent actual = shadowOf(activity).getNextStartedActivity();
+        assertEquals(expectedIntent.getComponent(), actual.getComponent());
     }
 
 }

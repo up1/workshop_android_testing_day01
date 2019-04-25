@@ -35,6 +35,11 @@ android {
             includeAndroidResources = true
         }
     }
+//    testOptions {
+//        unitTests.all {
+//            systemProperty 'robolectric.enabledSdks', '21'
+//        }
+//    }
 }
 
 dependencies {
