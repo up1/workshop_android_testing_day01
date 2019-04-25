@@ -1,0 +1,9 @@
+app_package_name('com.example.myapplication')
+
+app_apk_path('app/build/outputs/apk/debug/app-debug.apk')
+tests_apk_path('app/build/outputs/apk/AndroidTest/debug/app-debug-androidTest.apk')
+
+locales(['en-US'])
+
+clear_previous_screenshots(true)
+
