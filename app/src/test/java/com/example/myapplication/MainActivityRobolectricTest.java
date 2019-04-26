@@ -42,7 +42,7 @@ public class MainActivityRobolectricTest {
 
         assertEquals(expectedIntent.getComponent(),
                      actual.getComponent());
-        assertEquals("Success!!!2",
+        assertEquals("Success!!!",
                      actual.getStringExtra("RESULT"));
     }
 

@@ -18,12 +18,13 @@ public class LoginFailureUITest {
 
     @Rule
     public ActivityTestRule<MainActivity> activityRule =
-            new ActivityTestRule<>(MainActivity.class);
+            new ActivityTestRule<>(MainActivity.class, false, false);
 
     @Test
     public void username_ผิด() {
         // 1. Arrange (Given)
         // Prepare data or env for testing
+        activityRule.launchActivity(new Intent());
         // 2. Act (When)
         onView(withId(R.id.et_username)).perform(
                         replaceText("adsmin"),
@@ -44,6 +45,7 @@ public class LoginFailureUITest {
     public void password_ผิด() {
         // 1. Arrange (Given)
         // Prepare data or env for testing
+        activityRule.launchActivity(new Intent());
         // 2. Act (When)
         onView(withId(R.id.et_username)).perform(
                 replaceText("admin"),
