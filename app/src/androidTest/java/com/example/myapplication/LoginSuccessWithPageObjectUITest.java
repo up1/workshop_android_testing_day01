@@ -3,6 +3,9 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 
+import com.example.myapplication.pages.LoginPage;
+import com.example.myapplication.pages.LoginResultPage;
+
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -27,21 +30,12 @@ public class LoginSuccessWithPageObjectUITest {
         activityRule.launchActivity(new Intent());
 
         // 2. Act (When)
-        onView(withId(R.id.et_username))
-                .perform(
-                        replaceText("admin"),
-                        closeSoftKeyboard()
-                        );
-        onView(withId(R.id.et_passsword))
-                .perform(
-                        replaceText("password"),
-                        closeSoftKeyboard()
-                );
-
-        onView(withId(R.id.btn_signin)).perform(click());
+        LoginPage.fillInUserName("admin");
+        LoginPage.fillInPassword("password");
+        LoginPage.clickLogin();
 
         // 3. Assert (Then)
-        onView(withId(R.id.tv_result)).check(matches(withText("Success!!!")));
+        LoginResultPage.isShowResult("Success!!!");
 
     }
 
